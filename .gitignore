@@ -1,2 +1,12 @@
 
 *.yaml
+Temp/UnityLockfile
+*.yaml
+*.bakert
+*.yaml
+Library/gfu/cache/repoinfo.yaml
+Library/gfu/cache/gittrackingstatus.yaml
+Library/gfu/cache/gitstatusentries.yaml
+Library/gfu/cache/gitlocks.yaml
+Library/EditorInstance.json
+Library/gfu/cache/gitlocks.yaml
