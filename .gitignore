@@ -1,7 +1,5 @@
 
 *.yaml
-Temp/UnityLockfile
-*.yaml
 *.bakert
-*.yaml
-Library/*
+Temp/*.*
+Library/*.*
