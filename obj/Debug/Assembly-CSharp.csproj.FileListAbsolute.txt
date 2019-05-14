@@ -1,0 +1,6 @@
+D:\Unity Projects\PiAumaMapeamento\PiAumaMapeamento\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\Unity Projects\PiAumaMapeamento\PiAumaMapeamento\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+I:\PI\PiAumaMapeamento\PiAumaMapeamento\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+I:\PI\PiAumaMapeamento\PiAumaMapeamento\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\edson\Documents\GitHub\AumaMapeamento3D\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\edson\Documents\GitHub\AumaMapeamento3D\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
