@@ -40,15 +40,16 @@ public class DataBaseComunication : MonoBehaviour
             return null;
         }
     }
-    public MySqlDataReader selectAllBigBags()
+    public MySqlDataReader selectBigBags()
     {
         try
         {
             MySqlConnection conexao = openConnection();
             comando = conexao.CreateCommand();
-            comando.CommandText = "select bb.*, l.*, p.* " +
-                                    "from bigbag as bb inner join lote as l on l.idlote = bb.idlote " +
-                                    "inner join produtor as p on p.idProdutor = l.idProdutor"; 
+            comando.CommandText = "select bb.*,tc.descricaoTipoCafe, l.descricaoLote, p.nome " +
+                                    " from bigbag as bb inner join tipoCafe as tc " +
+                                    " on tc.idTipoCafe = bb.idTipoCafe inner join lote as l on l.idlote = bb.idlote " +
+                                    " inner join produtor as p on p.idProdutor = l.idProdutor"; 
             reader = comando.ExecuteReader();
             return reader;
         }
@@ -59,13 +60,17 @@ public class DataBaseComunication : MonoBehaviour
             return null;
         }
     }
-    public MySqlDataReader selectLotesDescricao()
+    public MySqlDataReader selectBigBags(int id)
     {
         try
         {
             MySqlConnection conexao = openConnection();
             comando = conexao.CreateCommand();
-            comando.CommandText = "select lote.descricao from lote";
+            comando.CommandText = "select bb.*,tc.descricaoTipoCafe, l.descricaoLote, p.nome " +
+                                  "from bigbag as bb innerjoin tipoCafe as tc on tc.idTipoCafe = bb.idTipoCafe" +
+                                  "inner join lote as l on l.idlote = bb.idlote " +
+                                  "inner join produtor as p on p.idProdutor = l.idProdutor" +
+                                  "where bigbag.idBigBag = " + id ;
             reader = comando.ExecuteReader();
             return reader;
         }
@@ -76,113 +81,103 @@ public class DataBaseComunication : MonoBehaviour
             return null;
         }
     }
-    public MySqlDataReader selectProdutorNome()
+    public MySqlDataReader selectBigBags(string UID, string lote, string produtor, string tipoCafe)
     {
         try
         {
             MySqlConnection conexao = openConnection();
             comando = conexao.CreateCommand();
-            comando.CommandText = "select produtor.nome from produtor";
-            reader = comando.ExecuteReader();
-            return reader;
-        }
-        catch (MySqlException ex)
-        {
-            Debug.LogError(ex);
-            CloseConnection();
-            return null;
-        }
-    }
+            comando.CommandText = "select bb.*,tc.descricaoTipoCafe, l.descricaoLote, p.nome " +
+                              "from bigbag as bb innerjoin tipoCafe as tc on tc.idTipoCafe = bb.idTipoCafe" +
+                              "inner join lote as l on l.idlote = bb.idlote " +
+                              "inner join produtor as p on p.idProdutor = l.idProdutor" +
+                              "where ";
 
-
-    public MySqlDataReader selectOneBigBag(int id)
-    {
-        try
-        {
-            MySqlConnection conexao = openConnection();
-            comando = conexao.CreateCommand();
-            comando.CommandText = "SELECT * FROM bigbag where bigbag.idBigBag ='" + id + "'";
-            reader = comando.ExecuteReader();
-            return reader;
-        }
-        catch (MySqlException ex)
-        {
-            Debug.LogError(ex);
-            CloseConnection();
-            return null;
-        }
-    }
-    public MySqlDataReader selectBigBagsLoteByLote(string lote)
-    {
-        int idlote = returnIdLote(lote);
-        if (idlote != -1)
-        {
-            try
+            if (UID != null)
             {
-                MySqlConnection conexao = openConnection();
-                comando = conexao.CreateCommand();
-                comando.CommandText = "select  bigbag.*, lote.*, produtor.* " +
-                    "from (bigbag inner join lote on bigbag.idlote = lote.idLote " +
-                    "inner join produtor on produtor.idProdutor = lote.idProdutor) " +
-                    "where lote.idlote = "+idlote;
-                reader = comando.ExecuteReader();
-                return reader;
+                comando.CommandText += "bigbag.codRFID = " + UID;
             }
-            catch (MySqlException ex)
+            if (lote != null)
             {
-                Debug.LogError(ex);
-                CloseConnection();
-                return null;
+                comando.CommandText += ((UID == null)?",": "") + " lote.descricaoLote = '" + lote + "'";
+            }
+            if (produtor != null)
+            {
+                comando.CommandText += ((UID == null && lote == null) ? "," : "") + " produtor.nome = '" + produtor + "'";
+            }
+            if (tipoCafe != null)
+            {
+                comando.CommandText += " tipoCafe.descricaoTipoCafe = '" + tipoCafe + "'";
             }
 
-        }
-        return null;
-    }
-    public int returnIdLote(string descricaoLote)
-    {
-        int retorno = -1;
-        try
-        {
-            MySqlConnection conexao = openConnection();
-            comando = conexao.CreateCommand();
-            comando.CommandText = "select idlote from lote where lote.descricao = '"+descricaoLote+"'";
             reader = comando.ExecuteReader();
-            while (reader.Read()) {
-                retorno = (int)reader["idLote"];
-            }
+            return reader;
         }
         catch (MySqlException ex)
         {
             Debug.LogError(ex);
             CloseConnection();
-            return -1;
+            return null;
         }
-
-        return retorno;
     }
-    public int returnRFID(int tagRFID)
+
+    public MySqlDataReader selectAllInfoOfType(string type)
     {
-        int retorno = -1;
         try
         {
             MySqlConnection conexao = openConnection();
             comando = conexao.CreateCommand();
-            comando.CommandText = " SELECT bigbag.codRFID FROM databasepi.bigbag where codRfid =" + tagRFID ;
+            comando.CommandText = "select * from " + type;
             reader = comando.ExecuteReader();
-            while (reader.Read())
-            {
-
-                retorno++;
-            }
+            return reader;
         }
         catch (MySqlException ex)
         {
             Debug.LogError(ex);
             CloseConnection();
-            return -1;
-        }
 
-        return retorno;
+            return null;
+        }
+    }
+
+    public MySqlDataReader selectAllInfoOfType(string type,string descricao)
+    {
+        try
+        {
+            MySqlConnection conexao = openConnection();
+            comando = conexao.CreateCommand();
+            comando.CommandText = "select * from " + type + " where ";
+            type.ToLower();
+            type.Trim();
+            if (type.Equals("lote"))
+            {
+                comando.CommandText += " lote.descricaoLote = '" + descricao + "'";
+            }else
+            if (type.Equals("produtor"))
+            {
+                comando.CommandText += " produtor.nome = '" + descricao + "'";
+            }else
+            if (type.Equals("tipocafe"))
+            {
+                comando.CommandText += " tipoCafe.descricaoTipoCafe = '" + descricao + "'";
+            }else
+            if (type.Equals("bigbag"))
+            {
+                comando.CommandText += " bigbag.codRFID = " + descricao;
+            }else
+            if (type.Equals("bigbaglote"))
+            {
+                comando.CommandText = "SELECT * FROM databasepi.bigbag where bigbag.idLote = (select idLote from lote where lote.descricaoLote ='"+descricao+"');";
+            }
+           reader = comando.ExecuteReader();
+            return reader;
+        }
+        catch (MySqlException ex)
+        {
+            Debug.LogError(ex);
+            CloseConnection();
+            return null;
+        }
     }
 
     public void queryForMysql(string query)
@@ -214,9 +209,4 @@ public class DataBaseComunication : MonoBehaviour
         comando = null;
         conexao.Close();
     }
-
-
-
-
-
 }

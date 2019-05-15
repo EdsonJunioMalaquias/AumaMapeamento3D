@@ -19,15 +19,11 @@ public class EnderecamentoArea : MonoBehaviour
     public int QtdLinhas { get => qtdLinhas; set => qtdLinhas = value; }
     public int QtdColunas { get => qtdColunas; set => qtdColunas = value; }
 
-    //public GameObject quadrado;
-
-    // Start is called before the first frame update
     void Start()
     {
         AtributosText();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

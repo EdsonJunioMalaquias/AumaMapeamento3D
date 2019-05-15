@@ -46,7 +46,7 @@ public class ControlerPadrao
     public EnderecamentoArea enderecamentoArea;
     public BigBagControlScript bigBagControlScript;
     private List<string> areaList = new List<string> { "1" };
-    private List<string> nivelList = new List<string> { "1", "2", "3", "4" };
+    private List<string> nivelList = new List<string> { "Selecione","1", "2", "3", "4" };
     private List<string> tipoCafeList = new List<string> { "MK", "Mk14" };
     private List<string> produtorList = new List<string>();
     private List<string> loteList = new List<string>();
@@ -78,20 +78,9 @@ public class UIController : MonoBehaviour
     public ControlerPadrao controlerPadrao;
     public Cadastro cadastro;
 
-
-
-
-
     void Start()
     {
-        closeAllView();
-        
-    }
-
-
-    void Update()
-    {
-
+        closeAllView();   
     }
 
     public void findBestPosition()
@@ -106,7 +95,7 @@ public class UIController : MonoBehaviour
         controlerPadrao.Reader = null;
         string loteText = cadastro.DropDownLote.captionText.text;
 
-        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectBigBagsLoteByLote(loteText);
+        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("bigbaglote",loteText);//seleciona todos os bigbag daquele lote
         while (controlerPadrao.Reader.Read() && controlerPadrao.Reader != null)
         {
 
@@ -171,14 +160,14 @@ public class UIController : MonoBehaviour
         bool isLeftSide = true;
         for (int linha = 0; linha <= 5; linha++)
         {
-            for (int coluna = 0; coluna <= 5; coluna++)
+            for (int coluna = 1; coluna <= 5; coluna++)
             {
                 for (int nivel = 0; nivel <= 4; nivel++)
                 {
                     string descricaoLocalizacao = "A" + ((area > 9) ? "" + area : "0" + area) +
                                     "L" + ((linha > 9) ? "" + linha : "0" + linha) +
                                     "C" + ((coluna > 9) ? "" + coluna : "0" + coluna) +
-                                    "N" + ((nivel > 4) ? "" + 4 : "" + nivel) +
+                                    "N" + nivel +
                                     ((isLeftSide) ? "E" : "D");
                     if (nivel < 4)
                     {
@@ -186,11 +175,12 @@ public class UIController : MonoBehaviour
 
                         sb.Remove(10, 1);
 
-                        sb.Insert(10, nivel + 1);
+                        sb.Insert(10, nivel);
                         string localizacao = sb.ToString();
 
                         if (!GameObject.Find(localizacao))
                         {
+                            Debug.Log(localizacao);
                             cadastro.FieldColuna.text = ("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
                             cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
                             cadastro.DropDownNivel.value = nivel+1;
@@ -232,37 +222,49 @@ public class UIController : MonoBehaviour
 
     public void refresh()
     {
+        cadastro.DropDownArea.ClearOptions();
+        cadastro.DropDownNivel.ClearOptions();
         cadastro.DropDownLote.ClearOptions();
         cadastro.DropDownProdutor.ClearOptions();
-        cadastro.DropdownProdutorCadastroLote.ClearOptions();
         cadastro.DropDownTipoCafe.ClearOptions();
+        cadastro.DropdownProdutorCadastroLote.ClearOptions();
+
         cadastro.DropDownArea.AddOptions(controlerPadrao.AreaList);
         cadastro.DropDownNivel.AddOptions(controlerPadrao.NivelList);
         cadastro.DropDownLote.AddOptions(controlerPadrao.LoteList);
         cadastro.DropDownProdutor.AddOptions(controlerPadrao.ProdutorList);
         cadastro.DropDownTipoCafe.AddOptions(controlerPadrao.TipoCafeList);
+
         cadastro.FieldDateDay.text = ((DateTime.Now.Day<10)? "0" + DateTime.Now.Day : "" + DateTime.Now.Day);
         cadastro.FieldDateMonth.text = ((DateTime.Now.Month < 10) ? "0" + DateTime.Now.Month : "" + DateTime.Now.Month);
         cadastro.FieldDateYear.text = "" + DateTime.Now.Year;
         cadastro.DropdownProdutorCadastroLote.AddOptions(controlerPadrao.ProdutorList);
     }
     public void refreshList()
-    {
+    {   
         controlerPadrao.LoteList = new List<String> { "Selecione" };
         controlerPadrao.ProdutorList = new List<String> { "Selecione" };
-        controlerPadrao.TipoCafeList = new List<String> { "Selecione" };
-        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectLotesDescricao();
+        controlerPadrao.TipoCafeList = new List<string> { "Selecione" };
 
+        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("lote");
         while (controlerPadrao.Reader.Read())
         {
-            controlerPadrao.LoteList.Add((string)(controlerPadrao.Reader["descricao"]));
+            controlerPadrao.LoteList.Add((string)(controlerPadrao.Reader["descricaoLote"]));
         }
         controlerPadrao.dataBaseComunication.CloseConnection(controlerPadrao.Reader);
-        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectProdutorNome();
+
+        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("produtor");
         while (controlerPadrao.Reader.Read())
         {
             controlerPadrao.ProdutorList.Add((string)(controlerPadrao.Reader["nome"]));
         }
+        controlerPadrao.dataBaseComunication.CloseConnection(controlerPadrao.Reader);
+        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("tipocafe");
+        while (controlerPadrao.Reader.Read())
+        {
+            controlerPadrao.TipoCafeList.Add((string)(controlerPadrao.Reader["descricaotipocafe"]));
+        }
+
         controlerPadrao.dataBaseComunication.CloseConnection(controlerPadrao.Reader);
         controlerPadrao.Reader = null;
 
@@ -396,6 +398,20 @@ public class UIController : MonoBehaviour
             }
         }
         try{
+            MySqlDataReader reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("tipocafe", cadastro.DropDownTipoCafe.captionText.text.ToString());
+
+            int idTipoCafe = -1;
+            while (reader.Read())
+            {
+                idTipoCafe = (int)reader["idTipoCafe"];
+                break;
+            }
+            if (idTipoCafe == -1)
+            {
+                cadastro.MensagemErro.text = "Não foi possivel Ler o Tipo do cafe";
+                return;
+            }
+            reader.Close();
             int area = int.Parse(cadastro.DropDownArea.captionText.text);
             int linha = int.Parse(cadastro.FieldLinha.text);
             int coluna = int.Parse(cadastro.FieldColuna.text);
@@ -405,21 +421,35 @@ public class UIController : MonoBehaviour
                                 "C" + ((coluna > 9) ? "" + coluna : "0" + coluna) +
                                 "N" + cadastro.DropDownNivel.captionText.text +
                                 ((cadastro.IsLeftSide) ? "E" : "D");
+
             if (GameObject.Find(nomeObjeto))
             {
                 cadastro.MensagemErro.text = "Este Possição já esta sendo ocupada tente outra";
                 return;
             }
-            Debug.Log(controlerPadrao.dataBaseComunication.returnRFID(int.Parse(cadastro.FieldUID.text)));
-            if(controlerPadrao.dataBaseComunication.returnRFID(int.Parse(cadastro.FieldUID.text)) >= 0)
+
+            
+            if (controlerPadrao.dataBaseComunication.selectAllInfoOfType("bigbag", cadastro.FieldUID.text.ToString()).HasRows)
             {
                 cadastro.MensagemErro.text = "Esta tag RFID já esta sendo utilizada Insira outra";
                 return;
             }
+            reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("lote", cadastro.DropDownLote.captionText.text.ToString());
 
-            int idLote = controlerPadrao.dataBaseComunication.returnIdLote(cadastro.DropDownLote.captionText.text);
+            int idLote =-1;
+            while (reader.Read())
+            {
+                 idLote = (int)reader["idLote"];
+                break;
+            }
+            if(idLote == -1)
+            {
+                cadastro.MensagemErro.text = "Não foi possivel Ler o Lote";
+                return;
+            }
             int dateTime = int.Parse(""+cadastro.FieldDateYear.text+ cadastro.FieldDateMonth.text+ cadastro.FieldDateDay.text);
-        controlerPadrao.bigBagControlScript.insertBigBagInDataBase(tipoCafe, nomeObjeto, int.Parse(cadastro.FieldUID.text), int.Parse(cadastro.FieldPeso.text), idLote, int.Parse(cadastro.FieldQuantidadeSacasCafe.text), dateTime);   
+            reader.Close();
+            controlerPadrao.bigBagControlScript.InsertBigBag(idTipoCafe, nomeObjeto, int.Parse(cadastro.FieldUID.text), int.Parse(cadastro.FieldPeso.text), idLote, int.Parse(cadastro.FieldQuantidadeSacasCafe.text), dateTime);   
         cadastro.MensagemErro.color = new Color(0, 255, 0, 255);
         cadastro.MensagemErro.text = "Cadastro realizado com sucesso!";
         }
@@ -428,8 +458,6 @@ public class UIController : MonoBehaviour
             Debug.Log(ex);
             return;
         }
-
-
     }
     public void limpar()
     {
@@ -450,8 +478,6 @@ public class UIController : MonoBehaviour
         cadastro.FieldQuantidadeSacasCafe.text = "";
         cadastro.FieldUID.text = "";
         StartCoroutine(limparMensagem(1f));
-        refreshList();
-        refresh();
     }
     public IEnumerator limparMensagem(float tempo)
     {
@@ -479,7 +505,6 @@ public class UIController : MonoBehaviour
     }
     public void OpenViewCadastroLote()
     {
-
         refreshList();
         refresh();
         controlerPadrao.ViewNewBigBag.SetActive(false);
@@ -517,7 +542,6 @@ public class UIController : MonoBehaviour
         controlerPadrao.ViewFound.SetActive(false);
         controlerPadrao.MainPanel.SetActive(false);
     }
-
 
     public void cadastroProdutor()
     {

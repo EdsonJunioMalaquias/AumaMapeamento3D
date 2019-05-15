@@ -13,20 +13,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2019-05-14T15:13:24.782-03:00
-  initializedAtString: 2019-05-14T15:13:24.327-03:00
+  lastUpdatedAtString: 2019-05-14T23:24:14.656-03:00
+  initializedAtString: 2019-05-14T22:45:25.796-03:00
   entries:
-  - path: Assembly-CSharp.csproj
-    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assembly-CSharp.csproj
-    projectPath: Assembly-CSharp.csproj
+  - path: .vs\AumaMapeamento3D\v15\.suo
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\.vs\AumaMapeamento3D\v15\.suo
+    projectPath: .vs\AumaMapeamento3D\v15\.suo
     originalPath: 
-    status: 1
+    status: 3
     staged: 0
-  - path: Library\EditorInstance.json
-    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\EditorInstance.json
-    projectPath: Library\EditorInstance.json
+  - path: .vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\.vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide
+    projectPath: .vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide
     originalPath: 
-    status: 1
+    status: 3
+    staged: 0
+  - path: .vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide-shm
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\.vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide-shm
+    projectPath: .vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide-shm
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: .vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide-wal
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\.vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide-wal
+    projectPath: .vs\AumaMapeamento3D\v15\Server\sqlite3\storage.ide-wal
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Scenes\Scene.unity
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assets\Scenes\Scene.unity
+    projectPath: Assets\Scenes\Scene.unity
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Scripts\BigBagControlScript.cs
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assets\Scripts\BigBagControlScript.cs
+    projectPath: Assets\Scripts\BigBagControlScript.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Scripts\DataBaseComunication.cs
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assets\Scripts\DataBaseComunication.cs
+    projectPath: Assets\Scripts\DataBaseComunication.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Scripts\DataBaseComunication.cs.meta
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assets\Scripts\DataBaseComunication.cs.meta
+    projectPath: Assets\Scripts\DataBaseComunication.cs.meta
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Scripts\EnderecamentoArea.cs
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assets\Scripts\EnderecamentoArea.cs
+    projectPath: Assets\Scripts\EnderecamentoArea.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Scripts\UIController.cs
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Assets\Scripts\UIController.cs
+    projectPath: Assets\Scripts\UIController.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\assetDatabase3
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\assetDatabase3
+    projectPath: Library\assetDatabase3
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\CurrentLayout.dwlt
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\CurrentLayout.dwlt
+    projectPath: Library\CurrentLayout.dwlt
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\CurrentMaximizeLayout.dwlt
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\CurrentMaximizeLayout.dwlt
+    projectPath: Library\CurrentMaximizeLayout.dwlt
+    originalPath: 
+    status: 3
     staged: 0
   - path: Library\gfu\cache\gitlocks.yaml
     fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\gfu\cache\gitlocks.yaml
@@ -52,15 +118,435 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Temp\ProcessJobs\737154fe064037c41b56e86139538fd0.bakert
-    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\ProcessJobs\737154fe064037c41b56e86139538fd0.bakert
-    projectPath: Temp\ProcessJobs\737154fe064037c41b56e86139538fd0.bakert
+  - path: Library\InspectorExpandedItems.asset
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\InspectorExpandedItems.asset
+    projectPath: Library\InspectorExpandedItems.asset
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\04\0437e8e6a42b47c43b98e472fe07e284
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\metadata\04\0437e8e6a42b47c43b98e472fe07e284
+    projectPath: Library\metadata\04\0437e8e6a42b47c43b98e472fe07e284
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\0a\0a89012e70519a44cb52cc76842523c8
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\metadata\0a\0a89012e70519a44cb52cc76842523c8
+    projectPath: Library\metadata\0a\0a89012e70519a44cb52cc76842523c8
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\53\53c380c2f71c784458cbdc4cdf4d8489
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\metadata\53\53c380c2f71c784458cbdc4cdf4d8489
+    projectPath: Library\metadata\53\53c380c2f71c784458cbdc4cdf4d8489
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\a8\a84b5286535c27e4690a1e3072e30dee
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\metadata\a8\a84b5286535c27e4690a1e3072e30dee
+    projectPath: Library\metadata\a8\a84b5286535c27e4690a1e3072e30dee
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\SceneVisibilityState.asset
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\SceneVisibilityState.asset
+    projectPath: Library\SceneVisibilityState.asset
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Assembly-CSharp.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp.pdb
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Assembly-CSharp.pdb
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.pdb
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll
+    projectPath: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll
+    projectPath: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll
+    projectPath: Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
+    projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.TextMeshPro.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.Timeline.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.Timeline.dll
+    projectPath: Library\ScriptAssemblies\Unity.Timeline.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll
+    projectPath: Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll
+    projectPath: Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll
+    projectPath: Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll
+    projectPath: Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\StateCache\Hierarchy\e0db1a-mainStage.json
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\StateCache\Hierarchy\e0db1a-mainStage.json
+    projectPath: Library\StateCache\Hierarchy\e0db1a-mainStage.json
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\StateCache\Hierarchy\fb8324-mainStage.json
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\StateCache\Hierarchy\fb8324-mainStage.json
+    projectPath: Library\StateCache\Hierarchy\fb8324-mainStage.json
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\StateCache\SceneView\ff7b07-mainStage.json
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Library\StateCache\SceneView\ff7b07-mainStage.json
+    projectPath: Library\StateCache\SceneView\ff7b07-mainStage.json
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Temp\__Backupscenes\0.backup
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\__Backupscenes\0.backup
+    projectPath: Temp\__Backupscenes\0.backup
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityLockfile
-    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityLockfile
-    projectPath: Temp\UnityLockfile
+  - path: Temp\UnityTempFile-048a8b0f1c6adfb429fb96236ac1c68e
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-048a8b0f1c6adfb429fb96236ac1c68e
+    projectPath: Temp\UnityTempFile-048a8b0f1c6adfb429fb96236ac1c68e
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-04d982e85192cbf4e97b541651b66a5d
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-04d982e85192cbf4e97b541651b66a5d
+    projectPath: Temp\UnityTempFile-04d982e85192cbf4e97b541651b66a5d
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-04e6eeb512b8c1f4d85ba40c3027211e
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-04e6eeb512b8c1f4d85ba40c3027211e
+    projectPath: Temp\UnityTempFile-04e6eeb512b8c1f4d85ba40c3027211e
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-0eca276525ab13f499cb96c17ef06748
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-0eca276525ab13f499cb96c17ef06748
+    projectPath: Temp\UnityTempFile-0eca276525ab13f499cb96c17ef06748
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-169534821ca610f49a9a1ad867ac98e3
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-169534821ca610f49a9a1ad867ac98e3
+    projectPath: Temp\UnityTempFile-169534821ca610f49a9a1ad867ac98e3
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-1a66999d30bfb4749be3ee6144d291c0
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-1a66999d30bfb4749be3ee6144d291c0
+    projectPath: Temp\UnityTempFile-1a66999d30bfb4749be3ee6144d291c0
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-1df032ac82d70974888c91a192e54db8
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-1df032ac82d70974888c91a192e54db8
+    projectPath: Temp\UnityTempFile-1df032ac82d70974888c91a192e54db8
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-1e33a1b54de46ea40b16a7f633d15562
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-1e33a1b54de46ea40b16a7f633d15562
+    projectPath: Temp\UnityTempFile-1e33a1b54de46ea40b16a7f633d15562
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-2cf2ff7a9f9480e47aaedc1937ad4319
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-2cf2ff7a9f9480e47aaedc1937ad4319
+    projectPath: Temp\UnityTempFile-2cf2ff7a9f9480e47aaedc1937ad4319
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-335b91044d3ebe040ba5a3cfea22055c
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-335b91044d3ebe040ba5a3cfea22055c
+    projectPath: Temp\UnityTempFile-335b91044d3ebe040ba5a3cfea22055c
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-352d3f20b9a1e9b4ab06d013e2e98389
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-352d3f20b9a1e9b4ab06d013e2e98389
+    projectPath: Temp\UnityTempFile-352d3f20b9a1e9b4ab06d013e2e98389
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-35ac6ea6e2f1254449c08fab88d9340c
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-35ac6ea6e2f1254449c08fab88d9340c
+    projectPath: Temp\UnityTempFile-35ac6ea6e2f1254449c08fab88d9340c
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-3bd58accca9d9b64cb12c60be3cab326
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-3bd58accca9d9b64cb12c60be3cab326
+    projectPath: Temp\UnityTempFile-3bd58accca9d9b64cb12c60be3cab326
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-3fd1b1f0eb96a324aa1225a2c3637252
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-3fd1b1f0eb96a324aa1225a2c3637252
+    projectPath: Temp\UnityTempFile-3fd1b1f0eb96a324aa1225a2c3637252
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-45cdadeb4388e794588bf1c6a4ea9012
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-45cdadeb4388e794588bf1c6a4ea9012
+    projectPath: Temp\UnityTempFile-45cdadeb4388e794588bf1c6a4ea9012
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-4eb0efb847179b949ada8968fdaac2d7
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-4eb0efb847179b949ada8968fdaac2d7
+    projectPath: Temp\UnityTempFile-4eb0efb847179b949ada8968fdaac2d7
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-5edcc65425a8983488e0e0227f7df2b2
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-5edcc65425a8983488e0e0227f7df2b2
+    projectPath: Temp\UnityTempFile-5edcc65425a8983488e0e0227f7df2b2
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-7409054f9cdc49c4ebc9038cef410e73
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-7409054f9cdc49c4ebc9038cef410e73
+    projectPath: Temp\UnityTempFile-7409054f9cdc49c4ebc9038cef410e73
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-7978dd762c68ad24180fd245a85864f5
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-7978dd762c68ad24180fd245a85864f5
+    projectPath: Temp\UnityTempFile-7978dd762c68ad24180fd245a85864f5
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-79820bcb793207b41a20fb66372226f8
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-79820bcb793207b41a20fb66372226f8
+    projectPath: Temp\UnityTempFile-79820bcb793207b41a20fb66372226f8
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-7c72e9bf9d19e3241ad52cd886705d2b
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-7c72e9bf9d19e3241ad52cd886705d2b
+    projectPath: Temp\UnityTempFile-7c72e9bf9d19e3241ad52cd886705d2b
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-7d7cb611f76373446837fdafc64a84d1
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-7d7cb611f76373446837fdafc64a84d1
+    projectPath: Temp\UnityTempFile-7d7cb611f76373446837fdafc64a84d1
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-8011b44b665f34e46b38e16c9e6c83b2
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-8011b44b665f34e46b38e16c9e6c83b2
+    projectPath: Temp\UnityTempFile-8011b44b665f34e46b38e16c9e6c83b2
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-85eef888b3816be418c6faf1bf13139a
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-85eef888b3816be418c6faf1bf13139a
+    projectPath: Temp\UnityTempFile-85eef888b3816be418c6faf1bf13139a
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-8789e4306342a1d48ad77aeb29ed908c
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-8789e4306342a1d48ad77aeb29ed908c
+    projectPath: Temp\UnityTempFile-8789e4306342a1d48ad77aeb29ed908c
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-8909dda8c3367c94d86b37034a7a8f9f
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-8909dda8c3367c94d86b37034a7a8f9f
+    projectPath: Temp\UnityTempFile-8909dda8c3367c94d86b37034a7a8f9f
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-8a28d12629f661b4aaaa496babb05f2e
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-8a28d12629f661b4aaaa496babb05f2e
+    projectPath: Temp\UnityTempFile-8a28d12629f661b4aaaa496babb05f2e
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-8ac3e547666e33b4d9b031ea94f546cb
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-8ac3e547666e33b4d9b031ea94f546cb
+    projectPath: Temp\UnityTempFile-8ac3e547666e33b4d9b031ea94f546cb
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-9120fc95644041749bd1c41001390d1f
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-9120fc95644041749bd1c41001390d1f
+    projectPath: Temp\UnityTempFile-9120fc95644041749bd1c41001390d1f
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-9d9b25996410a484891452e6e4e194bc
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-9d9b25996410a484891452e6e4e194bc
+    projectPath: Temp\UnityTempFile-9d9b25996410a484891452e6e4e194bc
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-af930401a55206f49956d434a61c8b70
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-af930401a55206f49956d434a61c8b70
+    projectPath: Temp\UnityTempFile-af930401a55206f49956d434a61c8b70
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-afce87cafa831e84e805b9d86343b471
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-afce87cafa831e84e805b9d86343b471
+    projectPath: Temp\UnityTempFile-afce87cafa831e84e805b9d86343b471
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-b5ddc432f3cbffa4a87a78b7527e1e05
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-b5ddc432f3cbffa4a87a78b7527e1e05
+    projectPath: Temp\UnityTempFile-b5ddc432f3cbffa4a87a78b7527e1e05
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-d4e009a0216757148a42b95c3cd23bd6
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-d4e009a0216757148a42b95c3cd23bd6
+    projectPath: Temp\UnityTempFile-d4e009a0216757148a42b95c3cd23bd6
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-d5ba6b272f473734a850f5f36992de3c
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-d5ba6b272f473734a850f5f36992de3c
+    projectPath: Temp\UnityTempFile-d5ba6b272f473734a850f5f36992de3c
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-d98a605a40516794a863f7f5854fd58a
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-d98a605a40516794a863f7f5854fd58a
+    projectPath: Temp\UnityTempFile-d98a605a40516794a863f7f5854fd58a
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-dd85b69ca14eb1b49b9fe886ef77d2a2
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-dd85b69ca14eb1b49b9fe886ef77d2a2
+    projectPath: Temp\UnityTempFile-dd85b69ca14eb1b49b9fe886ef77d2a2
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-df2d62977ebebf945874b86565411e03
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-df2d62977ebebf945874b86565411e03
+    projectPath: Temp\UnityTempFile-df2d62977ebebf945874b86565411e03
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-dfb4e81d046eb39409d422be021f1ee2
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-dfb4e81d046eb39409d422be021f1ee2
+    projectPath: Temp\UnityTempFile-dfb4e81d046eb39409d422be021f1ee2
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-e05db3dd53e762f41a76accec3d0d60b
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-e05db3dd53e762f41a76accec3d0d60b
+    projectPath: Temp\UnityTempFile-e05db3dd53e762f41a76accec3d0d60b
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-e41ee731ba29d0e4bb5a0ab8e13f9922
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-e41ee731ba29d0e4bb5a0ab8e13f9922
+    projectPath: Temp\UnityTempFile-e41ee731ba29d0e4bb5a0ab8e13f9922
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-ec06dc5e05f4f0d428158748598ff633
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-ec06dc5e05f4f0d428158748598ff633
+    projectPath: Temp\UnityTempFile-ec06dc5e05f4f0d428158748598ff633
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-f4c9ce263430cd04a97b68f4afab6003
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-f4c9ce263430cd04a97b68f4afab6003
+    projectPath: Temp\UnityTempFile-f4c9ce263430cd04a97b68f4afab6003
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-f7a8ce1e10718264794639d41da7f693
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-f7a8ce1e10718264794639d41da7f693
+    projectPath: Temp\UnityTempFile-f7a8ce1e10718264794639d41da7f693
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Temp\UnityTempFile-fe6e7ba37fec7fc41b42a8a13cdfaa30
+    fullPath: C:\Users\edson\Documents\GitHub\AumaMapeamento3D\Temp\UnityTempFile-fe6e7ba37fec7fc41b42a8a13cdfaa30
+    projectPath: Temp\UnityTempFile-fe6e7ba37fec7fc41b42a8a13cdfaa30
     originalPath: 
     status: 1
     staged: 0
