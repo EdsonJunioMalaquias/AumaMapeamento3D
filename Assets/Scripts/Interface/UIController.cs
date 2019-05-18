@@ -42,6 +42,7 @@ public class Cadastro
 [Serializable]
 public class ControlerPadrao
 {
+
     public DataBaseComunication dataBaseComunication;
     public EnderecamentoArea enderecamentoArea;
     public BigBagControlScript bigBagControlScript;
@@ -54,7 +55,7 @@ public class ControlerPadrao
     private MySqlDataReader reader = null;
 
     [SerializeField]
-    private GameObject fixedMenu, mainPanel,viewNewBigBag, viewNewLote,viewNewProdutor,viewNewTypeCoff, viewFind, viewFound;
+    private GameObject fixedMenu, mainPanel,viewNewBigBag, viewNewLote,viewNewProdutor,viewNewTypeCoff, viewFind, viewFound, viewFoundParcial;
 
     public List<string> AreaList { get => areaList; set => areaList = value; }
     public List<string> NivelList { get => nivelList; set => nivelList = value; }
@@ -71,10 +72,31 @@ public class ControlerPadrao
     public GameObject ViewNewTypeCoff { get => viewNewTypeCoff; set => viewNewTypeCoff = value; }
     public GameObject ViewFind { get => viewFind; set => viewFind = value; }
     public GameObject ViewFound { get => viewFound; set => viewFound = value; }
+    public GameObject ViewFoundParcial { get => viewFoundParcial; set => viewFoundParcial = value; }
 }
+public class Find
+{
+    [SerializeField]
+    private InputField fieldUID, fieldDateDay, fieldDateMonth, fieldDateYear;
+    [SerializeField]
+    private Dropdown dropDownLote, dropDownProdutor, dropDownTipoCafe;
+    [SerializeField]
+    private Text mensagemErro;
+    
+    public InputField FieldUID { get => fieldUID; set => fieldUID = value; }
+    public InputField FieldDateDay { get => fieldDateDay; set => fieldDateDay = value; }
+    public InputField FieldDateMonth { get => fieldDateMonth; set => fieldDateMonth = value; }
+    public InputField FieldDateYear { get => fieldDateYear; set => fieldDateYear = value; }
+    public Dropdown DropDownLote { get => dropDownLote; set => dropDownLote = value; }
+    public Dropdown DropDownProdutor { get => dropDownProdutor; set => dropDownProdutor = value; }
+    public Dropdown DropDownTipoCafe { get => dropDownTipoCafe; set => dropDownTipoCafe = value; }
+    public Text MensagemErro { get => mensagemErro; set => mensagemErro = value; }
+}
+
 
 public class UIController : MonoBehaviour
 {
+    public Find find;
     public ControlerPadrao controlerPadrao;
     public Cadastro cadastro;
 
@@ -421,7 +443,17 @@ public class UIController : MonoBehaviour
                                 "C" + ((coluna > 9) ? "" + coluna : "0" + coluna) +
                                 "N" + cadastro.DropDownNivel.captionText.text +
                                 ((cadastro.IsLeftSide) ? "E" : "D");
-
+            StringBuilder sb = new StringBuilder(nomeObjeto);
+            if (int.Parse(cadastro.DropDownNivel.captionText.text) - 1 > 0) {
+                sb.Remove(10, 1);
+                sb.Insert(10, int.Parse(cadastro.DropDownNivel.captionText.text) - 1);
+                string VerificacaoNivel = sb.ToString();
+                if (!GameObject.Find(VerificacaoNivel))
+                {
+                    cadastro.MensagemErro.text = "Não é possivel inserir um BigBag sem ter um no nivel abaixo.";
+                    return;
+                }
+            }
             if (GameObject.Find(nomeObjeto))
             {
                 cadastro.MensagemErro.text = "Este Possição já esta sendo ocupada tente outra";
@@ -541,11 +573,12 @@ public class UIController : MonoBehaviour
         controlerPadrao.ViewNewTypeCoff.SetActive(false);
         controlerPadrao.ViewFound.SetActive(false);
         controlerPadrao.MainPanel.SetActive(false);
+        controlerPadrao.ViewFoundParcial.SetActive(false);
     }
 
     public void cadastroProdutor()
     {
-
+        
     }
 
     public void cadastroLote()
@@ -555,6 +588,13 @@ public class UIController : MonoBehaviour
 
     public void cadastroTipoCafe()
     {
+
+    }
+    public void ConfirmFindBags()
+    {
+        closeAllView();
+        controlerPadrao.ViewFoundParcial.SetActive(true);
+        controlerPadrao.FixedMenu.SetActive(false);
 
     }
 }
