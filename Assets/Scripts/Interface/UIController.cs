@@ -90,10 +90,22 @@ public class Find
     public Dropdown DropDownProdutor { get => dropDownProdutor; set => dropDownProdutor = value; }
     public Dropdown DropDownTipoCafe { get => dropDownTipoCafe; set => dropDownTipoCafe = value; }
 }
+[Serializable]
+public class Alert
+{
+    [SerializeField]
+    private Text alertMensage;
+    [SerializeField]
+    private GameObject panelAlert;
+    public static int controlador =0 ;
+    public Text AlertMensage { get => alertMensage; set => alertMensage = value; }
+    public GameObject PanelAlert { get => panelAlert; set => panelAlert = value; }
+}
 
 
 public class UIController : MonoBehaviour
 {
+    public Alert alert;
     public Find find;
     public ControlerPadrao controlerPadrao;
     public Cadastro cadastro;
@@ -118,10 +130,9 @@ public class UIController : MonoBehaviour
         controlerPadrao.Reader = null;
         string loteText = cadastro.DropDownLote.captionText.text;
 
-        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("bigbaglote",loteText);//seleciona todos os bigbag daquele lote
+        controlerPadrao.Reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("bigbaglote", loteText);
         while (controlerPadrao.Reader.Read() && controlerPadrao.Reader != null)
         {
-
             string descricaoLocalizacao = (string)controlerPadrao.Reader["descricaoLocalizacao"];
             controlerPadrao.DescricaoLotes.Add(descricaoLocalizacao);
 
@@ -129,7 +140,6 @@ public class UIController : MonoBehaviour
             {
                 if (int.Parse("" + descricaoLocalizacao[10]) == i)
                 {
-
                     if (i < 4)
                     {
                         StringBuilder sb = new StringBuilder(descricaoLocalizacao);
@@ -140,108 +150,127 @@ public class UIController : MonoBehaviour
                         {
                             cadastro.FieldColuna.text = ("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
                             cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
-                            cadastro.DropDownNivel.value = i+1;
+                            cadastro.DropDownNivel.value = i + 1;
                             return;
                         }
                     }
                     else
                     {
                         StringBuilder sb = new StringBuilder(descricaoLocalizacao);
-
                         sb.Remove(10, 1);
                         sb.Insert(10, 1);
                         int coluna = int.Parse("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
-                        if (coluna + 1 < 10)
+                        if (coluna <= controlerPadrao.enderecamentoArea.QtdColunas)
                         {
-                            sb.Remove(8, 1);
-                            sb.Insert(8, coluna + 1);
+                            if (coluna + 1 < 10)
+                            {
+                                sb.Remove(8, 1);
+                                sb.Insert(8, coluna + 1);
+                            }
+                            else
+                            {
+                                sb.Remove(7, 1);
+                                sb.Remove(7, 1);
+                                sb.Insert(7, coluna + 1);
+                            }
+
+                            string localizacao = sb.ToString();
+                            if (!GameObject.Find(localizacao))
+                            {
+                                Debug.Log(localizacao);
+                                cadastro.FieldColuna.text = ("" + localizacao[7] + localizacao[8]);
+                                cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
+                                cadastro.DropDownNivel.value = 1;
+                                return;
+                            }
                         }
                         else
                         {
-                            sb.Remove(7, 1);
-                            sb.Remove(7, 1);
-                            sb.Insert(8, coluna + 1);
+                            int linha = int.Parse("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
+                            if (linha <= controlerPadrao.enderecamentoArea.QtdLinhas)
+                            {
+                                sb.Remove(7, 1);
+                                sb.Remove(7, 1);
+                                sb.Insert(7, 1);
+                                sb.Insert(7, 0);
+
+                                if (linha + 1 < 10)
+                                {
+                                    sb.Remove(5, 1);
+                                    sb.Insert(5, coluna + 1);
+                                }
+                                else
+                                {
+                                    sb.Remove(4, 1);
+                                    sb.Remove(4, 1);
+                                    sb.Insert(4, coluna + 1);
+                                }
+                                string localizacao = sb.ToString();
+                                Debug.Log(localizacao);
+                                if (!GameObject.Find(localizacao))
+                                {
+                                    
+                                    cadastro.FieldColuna.text = ("" + localizacao[7] + localizacao[8]);
+                                    cadastro.FieldLinha.text = ("" + localizacao[4] + localizacao[5]);
+                                    cadastro.DropDownNivel.value = 1;
+                                    return;
+                                }
+                            }
                         }
 
-                        string localizacao = sb.ToString();
-                        if (!GameObject.Find(localizacao))
-                        {
-                            Debug.Log(localizacao);
-                            cadastro.FieldColuna.text = ("" + localizacao[7] + localizacao[8]);
-                            cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
-                            cadastro.DropDownNivel.value = 1;
-                            return;
-                        }
                     }
 
                 }
-
             }
         }
-
         int area = 1;
         bool isLeftSide = true;
-        for (int linha = 0; linha <= 5; linha++)
+        int nivel = 1;
+        for (int linha = 0; linha <= controlerPadrao.enderecamentoArea.QtdLinhas; linha++)
         {
-            for (int coluna = 1; coluna <= 5; coluna++)
+            for (int coluna = 1; coluna <= controlerPadrao.enderecamentoArea.QtdColunas; coluna++)
             {
-                for (int nivel = 0; nivel <= 4; nivel++)
+                string descricaoLocalizacao = "A" + ((area > 9) ? "" + area : "0" + area) +
+                                "L" + ((linha > 9) ? "" + linha : "0" + linha) +
+                                "C" + ((coluna > 9) ? "" + coluna : "0" + coluna) +
+                                "N" + nivel +
+                                ((isLeftSide) ? "E" : "D");
+
+                StringBuilder sb = new StringBuilder(descricaoLocalizacao);
+                sb.Remove(10, 1);
+                sb.Insert(10, nivel);
+                string localizacao = sb.ToString();
+                Debug.Log(!GameObject.Find(localizacao) + "\n" + localizacao + "\n" + coluna + "\n" + linha);
+                if (!GameObject.Find(localizacao))
                 {
-                    string descricaoLocalizacao = "A" + ((area > 9) ? "" + area : "0" + area) +
-                                    "L" + ((linha > 9) ? "" + linha : "0" + linha) +
-                                    "C" + ((coluna > 9) ? "" + coluna : "0" + coluna) +
-                                    "N" + nivel +
-                                    ((isLeftSide) ? "E" : "D");
-                    if (nivel < 4)
+                    cadastro.FieldColuna.text = ("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
+                    cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
+                    cadastro.DropDownNivel.value = nivel;
+                    return;
+                }
+
+                else
+                {
+                    if (linha < controlerPadrao.enderecamentoArea.QtdLinhas)
                     {
-                        StringBuilder sb = new StringBuilder(descricaoLocalizacao);
-
-                        sb.Remove(10, 1);
-
-                        sb.Insert(10, nivel);
-                        string localizacao = sb.ToString();
-
-                        if (!GameObject.Find(localizacao))
+                        if (coluna == controlerPadrao.enderecamentoArea.QtdColunas)
                         {
-                            Debug.Log(localizacao);
-                            cadastro.FieldColuna.text = ("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
-                            cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
-                            cadastro.DropDownNivel.value = nivel+1;
-                            return;
+                            coluna = 1;
+                            linha++;
                         }
                     }
                     else
                     {
-                        StringBuilder sb = new StringBuilder(descricaoLocalizacao);
-
-                        sb.Remove(10, 1);
-                        sb.Insert(10, 1);
-                        int coluna2 = int.Parse("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
-                        if (coluna2 + 1 < 10)
-                        {
-                            sb.Remove(8, 1);
-                            sb.Insert(8, coluna2 + 1);
-                        }
-                        else
-                        {
-                            sb.Remove(7, 1);
-                            sb.Remove(7, 1);
-                            sb.Insert(8, coluna2 + 1);
-                        }
-
-                        string localizacao = sb.ToString();
-                        if (!GameObject.Find(localizacao))
-                        { 
-                            cadastro.FieldColuna.text = ("" + descricaoLocalizacao[7] + descricaoLocalizacao[8]);
-                            cadastro.FieldLinha.text = ("" + descricaoLocalizacao[4] + descricaoLocalizacao[5]);
-                            cadastro.DropDownNivel.value = 1;
-                            return;
-                        }
+                        Debug.Log("Está Area atingio a lotação Maxima");
+                        return;
                     }
                 }
+
             }
         }
     }
+    
+    
 
     public void Refresh()
     {
@@ -262,8 +291,6 @@ public class UIController : MonoBehaviour
         cadastro.FieldDateDay.text = ((DateTime.Now.Day<10)? "0" + DateTime.Now.Day : "" + DateTime.Now.Day);
         cadastro.FieldDateMonth.text = ((DateTime.Now.Month < 10) ? "0" + DateTime.Now.Month : "" + DateTime.Now.Month);
         cadastro.FieldDateYear.text = "" + DateTime.Now.Year;
-
-
 
         find.DropDownLote.ClearOptions();
         find.DropDownLote.AddOptions(controlerPadrao.LoteList);
@@ -502,13 +529,26 @@ public class UIController : MonoBehaviour
         cadastro.FieldUID.text = "";
         StartCoroutine(limparMensagem(1f));
     }
+    public void LimparFind()
+    {
+        find.DropDownLote.value = 0;
+        find.DropDownProdutor.value = 0;
+        find.DropDownTipoCafe.value = 0;
+        find.FieldDateDay.text = "";
+        find.FieldDateMonth.text = "";
+        find.FieldDateYear.text = "";
+        find.FieldUID.text = "";
+        StartCoroutine(limparMensagem(1f));
+    }
     public IEnumerator limparMensagem(float tempo)
     {
         yield return new WaitForSeconds(tempo);
         cadastro.MensagemErro.text = "";
+        alert.AlertMensage.text = "";
     }
     public void OpenViewCadastroBigBag()
     {
+        cadastro.MensagemErro.text = "";
         RefreshList();
         Refresh();
         controlerPadrao.FixedMenu.SetActive(false);
@@ -517,7 +557,7 @@ public class UIController : MonoBehaviour
     }
     public void OpenViewFind()
     {
-
+        cadastro.MensagemErro.text = "";
         RefreshList();
         Refresh();
         controlerPadrao.FixedMenu.SetActive(false);
@@ -533,17 +573,21 @@ public class UIController : MonoBehaviour
     {
         RefreshList();
         Refresh();
+        cadastro.MensagemErro.text = "";
         controlerPadrao.ViewNewBigBag.SetActive(false);
         controlerPadrao.ViewNewLote.SetActive(true);
+
     }
 
     public void OpenViewCadastroProdutor()
     {
+        cadastro.MensagemErro.text = "";
         controlerPadrao.ViewNewBigBag.SetActive(false);
         controlerPadrao.ViewNewProdutor.SetActive(true);
     }
     public void OpenViewCadastroTipoCafe()
     {
+        cadastro.MensagemErro.text = "";
         controlerPadrao.ViewNewBigBag.SetActive(false);
         controlerPadrao.ViewNewTypeCoff.SetActive(true);
     }
@@ -559,6 +603,8 @@ public class UIController : MonoBehaviour
     }
     public void CloseAllView()
     {
+       
+        alert.PanelAlert.SetActive(false);
         controlerPadrao.FixedMenu.SetActive(true);
         controlerPadrao.ViewNewBigBag.SetActive(false);
         controlerPadrao.ViewFind.SetActive(false);
@@ -568,6 +614,8 @@ public class UIController : MonoBehaviour
         controlerPadrao.ViewFound.SetActive(false);
         controlerPadrao.MainPanel.SetActive(false);
         controlerPadrao.ViewFoundParcial.SetActive(false);
+        alert.AlertMensage.text = "";
+        cadastro.MensagemErro.text = "";
     }
 
     public void CadastroProdutor()
