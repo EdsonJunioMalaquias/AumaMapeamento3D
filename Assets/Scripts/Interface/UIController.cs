@@ -74,14 +74,13 @@ public class ControlerPadrao
     public GameObject ViewFound { get => viewFound; set => viewFound = value; }
     public GameObject ViewFoundParcial { get => viewFoundParcial; set => viewFoundParcial = value; }
 }
+[Serializable]
 public class Find
 {
     [SerializeField]
     private InputField fieldUID, fieldDateDay, fieldDateMonth, fieldDateYear;
     [SerializeField]
     private Dropdown dropDownLote, dropDownProdutor, dropDownTipoCafe;
-    [SerializeField]
-    private Text mensagemErro;
     
     public InputField FieldUID { get => fieldUID; set => fieldUID = value; }
     public InputField FieldDateDay { get => fieldDateDay; set => fieldDateDay = value; }
@@ -90,7 +89,6 @@ public class Find
     public Dropdown DropDownLote { get => dropDownLote; set => dropDownLote = value; }
     public Dropdown DropDownProdutor { get => dropDownProdutor; set => dropDownProdutor = value; }
     public Dropdown DropDownTipoCafe { get => dropDownTipoCafe; set => dropDownTipoCafe = value; }
-    public Text MensagemErro { get => mensagemErro; set => mensagemErro = value; }
 }
 
 
@@ -102,10 +100,13 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        closeAllView();   
+        CloseAllView();
+        
+        List<int> i = new List<int>();
+
     }
 
-    public void findBestPosition()
+    public void FindBestPosition()
     {
         if (cadastro.DropDownLote.value == 0)
         {
@@ -242,7 +243,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void refresh()
+    public void Refresh()
     {
         cadastro.DropDownArea.ClearOptions();
         cadastro.DropDownNivel.ClearOptions();
@@ -250,19 +251,28 @@ public class UIController : MonoBehaviour
         cadastro.DropDownProdutor.ClearOptions();
         cadastro.DropDownTipoCafe.ClearOptions();
         cadastro.DropdownProdutorCadastroLote.ClearOptions();
-
+        
         cadastro.DropDownArea.AddOptions(controlerPadrao.AreaList);
         cadastro.DropDownNivel.AddOptions(controlerPadrao.NivelList);
         cadastro.DropDownLote.AddOptions(controlerPadrao.LoteList);
         cadastro.DropDownProdutor.AddOptions(controlerPadrao.ProdutorList);
         cadastro.DropDownTipoCafe.AddOptions(controlerPadrao.TipoCafeList);
+        cadastro.DropdownProdutorCadastroLote.AddOptions(controlerPadrao.ProdutorList);
 
         cadastro.FieldDateDay.text = ((DateTime.Now.Day<10)? "0" + DateTime.Now.Day : "" + DateTime.Now.Day);
         cadastro.FieldDateMonth.text = ((DateTime.Now.Month < 10) ? "0" + DateTime.Now.Month : "" + DateTime.Now.Month);
         cadastro.FieldDateYear.text = "" + DateTime.Now.Year;
-        cadastro.DropdownProdutorCadastroLote.AddOptions(controlerPadrao.ProdutorList);
+
+
+
+        find.DropDownLote.ClearOptions();
+        find.DropDownLote.AddOptions(controlerPadrao.LoteList);
+        find.DropDownProdutor.ClearOptions();
+        find.DropDownProdutor.AddOptions(controlerPadrao.ProdutorList);
+        find.DropDownTipoCafe.ClearOptions();
+        find.DropDownTipoCafe.AddOptions(controlerPadrao.TipoCafeList);
     }
-    public void refreshList()
+    public void RefreshList()
     {   
         controlerPadrao.LoteList = new List<String> { "Selecione" };
         controlerPadrao.ProdutorList = new List<String> { "Selecione" };
@@ -296,125 +306,106 @@ public class UIController : MonoBehaviour
         cadastro.MensagemErro.text = "";
         //verificação de erro        
         {
-        if (cadastro.FieldUID.text.Equals(""))
+            cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
+            if (cadastro.FieldUID.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha a Tag RFID";
                 return;
             }
             if (cadastro.DropDownLote.value == 0)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Selecione um Lote";
                 return;
             }
             if (cadastro.DropDownProdutor.value == 0)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Selecione um Produtor";
                 return;
             }
             if (cadastro.DropDownTipoCafe.value == 0)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Selecione o tipo do café";
                 return;
             }
 
             if (cadastro.FieldPeso.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha o campo Peso.";
                 return;
             }
             if (int.Parse(cadastro.FieldPeso.text) < 0 || int.Parse(cadastro.FieldPeso.text) > 1500)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Digite um peso valido";
                 return;
             }
             if (cadastro.FieldQuantidadeSacasCafe.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha o campo Quantidade sacas de café.";
                 return;
             }
             if (int.Parse(cadastro.FieldQuantidadeSacasCafe.text) < 0 || int.Parse(cadastro.FieldQuantidadeSacasCafe.text) >25)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Digite uma quandidade de sacas de café valida";
                 return;
             }
             if (cadastro.FieldDateDay.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha o campo data entrada dia.";
                 return;
             }
             if (int.Parse(cadastro.FieldDateDay.text) < 0 || int.Parse(cadastro.FieldDateDay.text) > 31)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Digite um dia valido";
                 return;
             }
             if (cadastro.FieldDateMonth.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha o campo data entrada mês.";
                 return;
             }
             if (int.Parse(cadastro.FieldDateMonth.text) < 0 || int.Parse(cadastro.FieldDateMonth.text) > 12)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Digite um Mês valido";
                 return;
             }
             if (cadastro.FieldDateYear.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha o campo data entrada ano.";
                 return;
             }
             if (int.Parse(cadastro.FieldDateYear.text) < 2000 || int.Parse(cadastro.FieldDateYear.text) > DateTime.Now.Year + 1)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Digite um ano valido";
                 return;
             }
             if (cadastro.FieldLinha.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha a area de linha ou pressione o botão para verificar a melhor posição. ";
                 return;
             }
             if (cadastro.FieldLinha.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha a area de Linha ou pressione o botão para verificar a melhor posição. ";
                 return;
             }
 
             if (int.Parse(cadastro.FieldLinha.text) > controlerPadrao.enderecamentoArea.QtdLinhas || int.Parse(cadastro.FieldLinha.text) < 0)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Linha Invalida";
                 return;
             }
             if (cadastro.FieldColuna.text.Equals(""))
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Preencha a area de coluna ou pressione o botão para verificar a melhor posição. ";
                 return;
             }
             if (int.Parse(cadastro.FieldLinha.text) > controlerPadrao.enderecamentoArea.QtdColunas || int.Parse(cadastro.FieldLinha.text) < 0)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Coluna Invalida";
                 return;
             }
             if (cadastro.DropDownNivel.value == 0)
             {
-                cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
                 cadastro.MensagemErro.text = "Selecione um nivel valido ou pressione o botão para verificar a melhor posição.";
                 return;
             }
@@ -491,7 +482,7 @@ public class UIController : MonoBehaviour
             return;
         }
     }
-    public void limpar()
+    public void Limpar()
     {
         cadastro.DropDownArea.value = 0;
         cadastro.DropDownLote.value = 0;
@@ -518,14 +509,17 @@ public class UIController : MonoBehaviour
     }
     public void OpenViewCadastroBigBag()
     {
-        refreshList();
-        refresh();
+        RefreshList();
+        Refresh();
         controlerPadrao.FixedMenu.SetActive(false);
         controlerPadrao.MainPanel.SetActive(true);
         controlerPadrao.ViewNewBigBag.SetActive(true);
     }
     public void OpenViewFind()
     {
+
+        RefreshList();
+        Refresh();
         controlerPadrao.FixedMenu.SetActive(false);
         controlerPadrao.MainPanel.SetActive(true);
         controlerPadrao.ViewFind.SetActive(true);
@@ -537,8 +531,8 @@ public class UIController : MonoBehaviour
     }
     public void OpenViewCadastroLote()
     {
-        refreshList();
-        refresh();
+        RefreshList();
+        Refresh();
         controlerPadrao.ViewNewBigBag.SetActive(false);
         controlerPadrao.ViewNewLote.SetActive(true);
     }
@@ -553,17 +547,17 @@ public class UIController : MonoBehaviour
         controlerPadrao.ViewNewBigBag.SetActive(false);
         controlerPadrao.ViewNewTypeCoff.SetActive(true);
     }
-    public void closeViewCadastro()
+    public void CloseViewCadastro()
     {
         controlerPadrao.ViewNewTypeCoff.SetActive(false);
         controlerPadrao.ViewNewProdutor.SetActive(false);
         controlerPadrao.ViewNewLote.SetActive(false);
         controlerPadrao.ViewNewBigBag.SetActive(true);
       
-        refreshList();
-        refresh();
+        RefreshList();
+        Refresh();
     }
-    public void closeAllView()
+    public void CloseAllView()
     {
         controlerPadrao.FixedMenu.SetActive(true);
         controlerPadrao.ViewNewBigBag.SetActive(false);
@@ -576,26 +570,113 @@ public class UIController : MonoBehaviour
         controlerPadrao.ViewFoundParcial.SetActive(false);
     }
 
-    public void cadastroProdutor()
+    public void CadastroProdutor()
     {
-        
+        cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
+        if (cadastro.FieldCadastroProdutor.text.Equals(""))
+        {
+            cadastro.MensagemErro.text = "Preencha o nome do produtor!";
+            return;
+        }
+        try
+        {
+            if (controlerPadrao.dataBaseComunication.selectAllInfoOfType("produtor", cadastro.FieldCadastroProdutor.text).HasRows)
+            {
+                cadastro.MensagemErro.text = "Este nome de produtor já esta sendo utilizado!";
+                cadastro.FieldCadastroProdutor.text = "";
+                controlerPadrao.dataBaseComunication.CloseConnection();
+                return;
+            }
+
+            controlerPadrao.bigBagControlScript.InsertTypeDescricao("produtor", cadastro.FieldCadastroProdutor.text);
+            cadastro.MensagemErro.color = new Color(0, 255, 0, 255);
+            cadastro.MensagemErro.text = "Cadastro realizado com sucesso!";
+            StartCoroutine(limparMensagem(1f));
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+            return;
+        }
     }
 
-    public void cadastroLote()
+    public void CadastroLote()
     {
+        cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
+        if (cadastro.DropdownProdutorCadastroLote.value == 0)
+        {
+            cadastro.MensagemErro.text = "Selecione um Produtor";
+            return;
+        }
+        if (cadastro.FieldCadastroLote.text.Equals(""))
+        {
+            cadastro.MensagemErro.text = "Preencha o nome do produtor!";
+            return;
+        }
+        try
+        {
+            MySqlDataReader reader = controlerPadrao.dataBaseComunication.selectAllInfoOfType("produtor", cadastro.DropdownProdutorCadastroLote.captionText.text.ToString());
+            int idProdutor = -1;
+            while (reader.Read())
+            {
+                idProdutor = (int)reader["idProdutor"];
+                break;
+            }
+            if (idProdutor == -1)
+            {
+                cadastro.MensagemErro.text = "Não foi possivel encontrar o produtor.";
+                reader.Close();
+                return;
+            }
+            if (controlerPadrao.dataBaseComunication.selectAllInfoOfType("lote", cadastro.FieldCadastroLote.text).HasRows)
+            {
+                cadastro.MensagemErro.text = "Este lote já está sendo cadastrado!";
+                cadastro.FieldCadastroLote.text = "";
+                controlerPadrao.dataBaseComunication.CloseConnection();
+                return;
+            }
 
+            controlerPadrao.bigBagControlScript.InsertLote(cadastro.FieldCadastroLote.text,idProdutor );
+            cadastro.MensagemErro.color = new Color(0, 255, 0, 255);
+            cadastro.MensagemErro.text = "Cadastro realizado com sucesso!";
+            StartCoroutine(limparMensagem(1f));
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+            return;
+        }
     }
 
-    public void cadastroTipoCafe()
+    public void CadastroTipoCafe()
     {
+        cadastro.MensagemErro.color = new Color(255, 0, 0, 255);
+        if (cadastro.FieldCadastroTipoCafe.text.Equals(""))
+        {
+            cadastro.MensagemErro.text = "Preencha o Tipo do café!";
+            return;
+        }
+        try
+        {
+            if (controlerPadrao.dataBaseComunication.selectAllInfoOfType("tipocafe", cadastro.FieldCadastroTipoCafe.text).HasRows)
+            {
+                cadastro.MensagemErro.text = "Este tipo de café já está cadastrado!";
+                cadastro.FieldCadastroTipoCafe.text = "";
+                controlerPadrao.dataBaseComunication.CloseConnection();
+                return;
+            }
 
+            controlerPadrao.bigBagControlScript.InsertTypeDescricao("tipocafe", cadastro.FieldCadastroTipoCafe.text);
+            cadastro.MensagemErro.color = new Color(0, 255, 0, 255);
+            cadastro.MensagemErro.text = "Cadastro realizado com sucesso!";
+            StartCoroutine(limparMensagem(1f));
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+            return;
+        }
     }
-    public void ConfirmFindBags()
-    {
-        closeAllView();
-        controlerPadrao.ViewFoundParcial.SetActive(true);
-        controlerPadrao.FixedMenu.SetActive(false);
 
-    }
 }
 

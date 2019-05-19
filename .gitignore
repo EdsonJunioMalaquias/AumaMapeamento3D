@@ -3,4 +3,5 @@
 *.bakert
 Temp/*.*
 Library/*.*
+Temp/*
 Temp/UnityLockfile

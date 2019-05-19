@@ -118,7 +118,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1054441828057397847}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Delete
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1054441828563477045
@@ -211,12 +222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69934b9c4f5388844a593f4c72a3140a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editButton: {fileID: 1054441829042268706}
-  deleteButton: {fileID: 1054441828057397846}
-  selectablebutton: {fileID: 2342727324838701127}
+  bigBagScript: {fileID: 0}
   renderLocalizacao: {fileID: 5642718423726429232}
   renderProdutor: {fileID: 6041533095946631677}
   renderLote: {fileID: 6773870574955124298}
+  btn: {fileID: 2342727324838701127}
 --- !u!1 &1054441829042268716
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A01L01C01N1E
+  m_Text: 
 --- !u!1 &3231550746785688115
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PRODUTOR Teste
+  m_Text: 
 --- !u!1 &3852455993739367489
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011820328, y: 0.036231875}
   m_AnchorMax: {x: 0.77, y: 0.9516908}
-  m_AnchoredPosition: {x: -0.010002136, y: -0.12999725}
+  m_AnchoredPosition: {x: -0.009979248, y: -0.12997437}
   m_SizeDelta: {x: -3.1800003, y: -3.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2543332656150716055
@@ -616,7 +626,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 166404008727573519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1965846654561243823}
+        m_MethodName: SelectBigBag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &4247534053090247187
@@ -697,4 +718,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lote GS1090MK
+  m_Text: 

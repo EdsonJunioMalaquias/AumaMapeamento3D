@@ -13,7 +13,7 @@ public class DataBaseComunication : MonoBehaviour
     private readonly string host = "localhost",
                             database = "databasepi",
                             user = "root",
-                            password = "";
+                            password = "root";
 
     private string connectionString;
     private MySqlConnection conexao = null;
@@ -88,26 +88,26 @@ public class DataBaseComunication : MonoBehaviour
             MySqlConnection conexao = openConnection();
             comando = conexao.CreateCommand();
             comando.CommandText = "select bb.*,tc.descricaoTipoCafe, l.descricaoLote, p.nome " +
-                              "from bigbag as bb innerjoin tipoCafe as tc on tc.idTipoCafe = bb.idTipoCafe" +
+                              "from bigbag as bb inner join tipoCafe as tc on tc.idTipoCafe = bb.idTipoCafe " +
                               "inner join lote as l on l.idlote = bb.idlote " +
-                              "inner join produtor as p on p.idProdutor = l.idProdutor" +
+                              "inner join produtor as p on p.idProdutor = l.idProdutor " +
                               "where ";
 
             if (UID != null)
             {
-                comando.CommandText += "bigbag.codRFID = " + UID;
+                comando.CommandText += "codRFID = " + UID;
             }
             if (lote != null)
             {
-                comando.CommandText += ((UID == null)?",": "") + " lote.descricaoLote = '" + lote + "'";
+                comando.CommandText += ((UID == null)?"": " AND ") + " descricaoLote = '" + lote + "'";
             }
             if (produtor != null)
             {
-                comando.CommandText += ((UID == null && lote == null) ? "," : "") + " produtor.nome = '" + produtor + "'";
+                comando.CommandText += ((UID == null && lote == null) ? "" : " AND ") + " nome = '" + produtor + "'";
             }
             if (tipoCafe != null)
             {
-                comando.CommandText += " tipoCafe.descricaoTipoCafe = '" + tipoCafe + "'";
+                comando.CommandText += ((UID == null && lote == null) ? "" : " AND ") + " descricaoTipoCafe = '" + tipoCafe + "'";
             }
 
             reader = comando.ExecuteReader();

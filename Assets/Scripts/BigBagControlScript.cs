@@ -5,13 +5,14 @@ using System;
 using System.Linq;
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
+using System.Text;
 public class BigBagControlScript : MonoBehaviour
 {
 
     public DataBaseComunication dataBaseComunication;
     public GameObject bigBag;
     private MySqlDataReader reader = null;
-
+    public Material materialInitialBigBags, materialSelectableBigBags, materialArrayBigBag;
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -47,9 +48,13 @@ public class BigBagControlScript : MonoBehaviour
                     GameObject bigbagbox = new GameObject(descricaoLocalizacao, typeof(MeshFilter), typeof(MeshRenderer), typeof(BigBagScript));
                     bigbagbox.transform.localScale = new Vector3(1, 1, 0.95f);
                     bigbagbox.GetComponent<MeshFilter>().mesh = bigBag.GetComponent<MeshFilter>().sharedMesh;
-                    bigbagbox.GetComponent<MeshRenderer>().material = bigBag.GetComponent<MeshRenderer>().sharedMaterial;
+                    bigbagbox.GetComponent<MeshRenderer>().material = materialInitialBigBags;
+                    bigbagbox.GetComponent<BigBagScript>().materialSelectable =  materialSelectableBigBags;
+                    bigbagbox.GetComponent<BigBagScript>().materialInitial = materialInitialBigBags;
+                    bigbagbox.GetComponent<BigBagScript>().materialArray = materialArrayBigBag;
+
                     bigbagbox.transform.position = new Vector3((coluna * 2), (linha * -2), ((nivel * -1) + 0.5f));
-                    bigbagbox.GetComponent<BigBagScript>().insertAllInformationsInObject(descricaoLocalizacao,
+                    bigbagbox.GetComponent<BigBagScript>().InsertAllInformationsInObject(descricaoLocalizacao,
                                                                                             (string)reader["descricaoLote"],
                                                                                             (string)reader["descricaoTipoCafe"],
                                                                                             (int)reader["pesokg"],
@@ -69,6 +74,19 @@ public class BigBagControlScript : MonoBehaviour
 
     public void destroyBigBag(string nomeObjeto)
     {
+        int nivel = int.Parse("" + nomeObjeto[10]);
+        StringBuilder sb = new StringBuilder(nomeObjeto);
+        if ((nivel) < 4)
+        {
+            sb.Remove(10, 1);
+            sb.Insert(10, (nivel + 1));
+            string VerificacaoNivel = sb.ToString();
+            if (GameObject.Find(VerificacaoNivel))
+            {
+                Debug.Log("Não é possivel removever um big um BigBag se tem um no nivel acima.");
+                return;
+            }
+        }
         GameObject objeto = GameObject.Find(nomeObjeto);
 
         try { 
@@ -87,7 +105,18 @@ public class BigBagControlScript : MonoBehaviour
                                        "C" + ((coluna > 9) ? "" + coluna : "0" + coluna) +
                                        "N" + ((nivel > 4) ? "" + 4 : "" + nivel) +
                                        ((isLeftSide) ? "E" : "D");
-
+        StringBuilder sb = new StringBuilder(nomeObjeto);
+        if ((nivel + 1 )<4 )
+        {
+            sb.Remove(10, 1);
+            sb.Insert(10,(nivel + 1));
+            string VerificacaoNivel = sb.ToString();
+            if (GameObject.Find(VerificacaoNivel))
+            {
+               Debug.Log( "Não é possivel removever um big um BigBag se tem um no nivel acima.");
+                return;
+            }
+        }
         GameObject objeto = GameObject.Find(nomeObjeto);
 
         try
@@ -124,7 +153,7 @@ public class BigBagControlScript : MonoBehaviour
     {
         try
         {
-            dataBaseComunication.queryForMysql("INSERT INTO databasepi.lote(descricaoProdutor, idProdutor)" +
+            dataBaseComunication.queryForMysql("INSERT INTO databasepi.lote(descricaoLote, idProdutor)" +
                 "VALUES('"+descricao+"',"+idProdutor + ")");
         }
         catch (Exception ex)

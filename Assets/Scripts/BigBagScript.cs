@@ -12,6 +12,7 @@ public class BigBagScript : MonoBehaviour
     private int tagRFID;
     private int iD;
     private string tipoCafe;
+    public Material materialSelectable, materialInitial, materialArray;
 
     public string DescricaoLocalização { get => descricaoLocalização; set => descricaoLocalização = value; }
     public string Descricaolote { get => descricaolote; set => descricaolote = value; }
@@ -21,7 +22,7 @@ public class BigBagScript : MonoBehaviour
     public int QtdSacasDeCafe { get => qtdSacasDeCafe; set => qtdSacasDeCafe = value; }
     public string TipoCafe { get => tipoCafe; set => tipoCafe = value; }
 
-    public void insertAllInformationsInObject( string descricaoLocalização, string descricaolote,string tipoCafe,int peso, int qtdSacasDeCafe, int tagRFID, int iD ){
+    public void InsertAllInformationsInObject( string descricaoLocalização, string descricaolote,string tipoCafe,int peso, int qtdSacasDeCafe, int tagRFID, int iD ){
         DescricaoLocalização = descricaoLocalização;
         Descricaolote = descricaolote;
         Peso = peso;
@@ -29,5 +30,20 @@ public class BigBagScript : MonoBehaviour
         TagRFID = tagRFID;
         ID = iD;
         TipoCafe = tipoCafe;
+    }
+    public void ApplySelectableMaterial()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = materialSelectable;
+
+    }
+    public void ApplyInitialMaterial()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = materialInitial;
+
+    }
+    public void ApplyArrayMaterial()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().material = materialArray;
+
     }
 }
