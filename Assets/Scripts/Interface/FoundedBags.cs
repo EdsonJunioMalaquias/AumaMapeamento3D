@@ -45,7 +45,7 @@ public class FoundedBags : MonoBehaviour
     }
     public void ResultParcial()
     {
-        ClearPesquisa();
+        ClaearFounded();
         try
         {
             string uID, lote, produtor, tipoCafe;
@@ -53,33 +53,47 @@ public class FoundedBags : MonoBehaviour
             lote = uIController.find.DropDownLote.captionText.text;
             produtor = uIController.find.DropDownProdutor.captionText.text;
             tipoCafe = uIController.find.DropDownTipoCafe.captionText.text;
+            bool isAllBigBags = false;
+            int i = 0;
+            if (uID.Equals("") && lote.Equals("Selecione") && produtor.Equals("Selecione") && tipoCafe.Equals("Selecione"))
+            {
+                isAllBigBags = true;
+            }
+            else{
+                if (uID.Equals(""))
+                {
+                    uID = null;
+                }
+                if (lote.Equals("Selecione"))
+                {
+                    lote = null;
+                }
+                if (produtor.Equals("Selecione"))
+                {
+                    produtor = null;
+                }
+                if (tipoCafe.Equals("Selecione"))
+                {
+                    tipoCafe = null;
+                }
+            }
 
-            if (uID.Equals(""))
-            {
-                uID = null;
-            }
-            if (lote.Equals("Selecione"))
-            {
-                lote = null;
-            }
-            if (produtor.Equals("Selecione"))
-            {
-                produtor = null;
-            }
-            if (tipoCafe.Equals("Selecione"))
-            {
-                tipoCafe = null;
-            }
 
-           
             uIController.CloseAllView();
             uIController.controlerPadrao.FixedMenu.SetActive(false);
             uIController.controlerPadrao.ViewFoundParcial.SetActive(true);
-            reader = uIController.controlerPadrao.dataBaseComunication.selectBigBags(
-                uID, lote, produtor, tipoCafe);
-
+            if (isAllBigBags)
+            {
+                reader = uIController.controlerPadrao.dataBaseComunication.selectBigBags();
+            }
+            else
+            {
+                reader = uIController.controlerPadrao.dataBaseComunication.selectBigBags(
+                    uID, lote, produtor, tipoCafe);
+            }
             if (reader.HasRows)
             {
+                
                 while (reader.Read())
                 {
                     string descricaoLocalizacao = (string)reader["descricaoLocalizacao"];
@@ -91,8 +105,9 @@ public class FoundedBags : MonoBehaviour
                         tempItensFounded.Add(itemTempFounded);
                         GameObject.Find(descricaoLocalizacao).GetComponent<BigBagScript>().ApplyArrayMaterial();
                     }
-
+                    i ++;
                 }
+                uIController.find.Title.text = i + " Big Bags Localizados";
                 if (tempItensFounded.Count < 3)
                 {
                     previous.enabled = false;
@@ -109,7 +124,8 @@ public class FoundedBags : MonoBehaviour
                 itensFounded[0].Clear();
                 itensFounded[1].Clear();
                 itensFounded[2].Clear();
-                ClearPesquisa();
+                ClaearFounded();
+                uIController.find.Title.text = i + " Big Bags Localizados";
                 Debug.Log("Nenhum BigBag Encontrado!");
 
             }
@@ -201,18 +217,18 @@ public class FoundedBags : MonoBehaviour
     }
     public void Close()
     {
-        ClearPesquisa();
+        ClaearFounded();
         uIController.controlerPadrao.FixedMenu.SetActive(true);
         uIController.controlerPadrao.ViewFoundParcial.SetActive(false);
     }
     public void FazerNovaPesquisa()
     {
-        ClearPesquisa();
+        ClaearFounded();
         uIController.controlerPadrao.ViewFoundParcial.SetActive(false);
         uIController.OpenViewFind();
 
     }
-   void ClearPesquisa()
+   void ClaearFounded()
     {
         for (int i = 0; i < tempItensFounded.Count; i++)
         {
@@ -230,7 +246,7 @@ public class FoundedBags : MonoBehaviour
             return;
         }
         uIController.controlerPadrao.bigBagControlScript.destroyBigBag(itensFounded[i].RenderLocalizacao.text);
-        ClearPesquisa();
+        ClaearFounded();
         ResultParcial();
     }
 }

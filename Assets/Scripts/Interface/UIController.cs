@@ -81,6 +81,8 @@ public class Find
     private InputField fieldUID, fieldDateDay, fieldDateMonth, fieldDateYear;
     [SerializeField]
     private Dropdown dropDownLote, dropDownProdutor, dropDownTipoCafe;
+    [SerializeField]
+    private Text title;
     
     public InputField FieldUID { get => fieldUID; set => fieldUID = value; }
     public InputField FieldDateDay { get => fieldDateDay; set => fieldDateDay = value; }
@@ -89,6 +91,7 @@ public class Find
     public Dropdown DropDownLote { get => dropDownLote; set => dropDownLote = value; }
     public Dropdown DropDownProdutor { get => dropDownProdutor; set => dropDownProdutor = value; }
     public Dropdown DropDownTipoCafe { get => dropDownTipoCafe; set => dropDownTipoCafe = value; }
+    public Text Title { get => title; set => title = value; }
 }
 [Serializable]
 public class Alert
@@ -534,11 +537,13 @@ public class UIController : MonoBehaviour
         find.DropDownLote.value = 0;
         find.DropDownProdutor.value = 0;
         find.DropDownTipoCafe.value = 0;
-        find.FieldDateDay.text = "";
-        find.FieldDateMonth.text = "";
-        find.FieldDateYear.text = "";
+        /*
+          find.FieldDateDay.text = "";
+          find.FieldDateMonth.text = "";
+          find.FieldDateYear.text = "";
+         */
         find.FieldUID.text = "";
-        StartCoroutine(limparMensagem(1f));
+        cadastro.MensagemErro.text = "";
     }
     public IEnumerator limparMensagem(float tempo)
     {
@@ -548,6 +553,7 @@ public class UIController : MonoBehaviour
     }
     public void OpenViewCadastroBigBag()
     {
+        Limpar();
         cadastro.MensagemErro.text = "";
         RefreshList();
         Refresh();
@@ -557,9 +563,10 @@ public class UIController : MonoBehaviour
     }
     public void OpenViewFind()
     {
-        cadastro.MensagemErro.text = "";
+
         RefreshList();
         Refresh();
+        LimparFind();
         controlerPadrao.FixedMenu.SetActive(false);
         controlerPadrao.MainPanel.SetActive(true);
         controlerPadrao.ViewFind.SetActive(true);
@@ -593,13 +600,14 @@ public class UIController : MonoBehaviour
     }
     public void CloseViewCadastro()
     {
+        RefreshList();
+        Refresh();
         controlerPadrao.ViewNewTypeCoff.SetActive(false);
         controlerPadrao.ViewNewProdutor.SetActive(false);
         controlerPadrao.ViewNewLote.SetActive(false);
         controlerPadrao.ViewNewBigBag.SetActive(true);
       
-        RefreshList();
-        Refresh();
+   
     }
     public void CloseAllView()
     {
